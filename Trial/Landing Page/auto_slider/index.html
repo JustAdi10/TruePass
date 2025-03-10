@@ -241,6 +241,27 @@
                 transform: rotateY(0deg);
             }
         }
+        .middle-message-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 90vh;
+            width: 100vw;
+            position: fixed;
+            top: 0;
+            left: 0;
+        }
+
+        .middle-message {
+        color: #ffffff;
+        font-size: 2.5rem;
+        text-align: center;
+        width: 80%;
+        max-width: 800px;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        z-index: 5;
+        font-family: 'Poppins', sans-serif;
+        }
 
         .logos {
             position: absolute;
@@ -310,6 +331,11 @@
             <div class="subtitle">
                 NFTs: Beyond Just Pictures, Create Your Destiny
             </div>
+            <div class="middle-message-container">
+                <div class="middle-message">
+                    <img src="tickets.png" alt="Graffiti" style="width: 100%;">
+                </div>
+            </div>    
         </div>
 
         <!-- First 3D Carousel
