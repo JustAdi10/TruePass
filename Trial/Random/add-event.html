@@ -47,7 +47,7 @@
         }
         .navbar {
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
             padding: 15px 0;
         }
@@ -60,19 +60,6 @@
             color: var(--accent-color);
         }
       
-        .nav-links {
-            display: flex;
-            gap: 25px;
-        }
-        .nav-links a {
-            color: var(--light-color);
-            text-decoration: none;
-            font-weight: 500;
-            transition: var(--transition);
-        }
-        .nav-links a:hover {
-            color: var(--primary-color);
-        }
         .btn {
             display: inline-block;
             background-color: var(--primary-color);
@@ -232,16 +219,6 @@
         }
 
         @media (max-width: 768px) {
-            .navbar {
-                flex-direction: column;
-                gap: 15px;
-            }
-            
-            .nav-links {
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-            
             .form-row {
                 grid-template-columns: 1fr;
             }
@@ -263,13 +240,6 @@
         <div class="container">
             <nav class="navbar">
                 <div class="logo">True<span>Pass</span></div>
-                <div class="nav-links">
-                    <a href="index.html">Dashboard</a>
-                    <a href="#">My Events</a>
-                    <a href="#">Analytics</a>
-                    <a href="#">Resources</a>
-                </div>
-                <a href="#" class="btn">Account</a>
             </nav>
         </div>
     </header>
