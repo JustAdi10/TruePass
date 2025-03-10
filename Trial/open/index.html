@@ -1041,8 +1041,45 @@
         
         <div class="search-bar">
             <span class="search-icon">🔍</span>
-            <input type="text" placeholder="Search events, collections, and accounts">
+            <input type="text" placeholder="Search events, collections, and accounts" id="searchInput">
         </div>
+        <script>
+            // Add this search functionality script
+            document.querySelector('.search-bar input').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    performSearch(this.value);
+                }
+            });
+            
+            document.querySelector('.search-icon').addEventListener('click', function() {
+                const searchValue = document.querySelector('.search-bar input').value;
+                performSearch(searchValue);
+            });
+            
+            function performSearch(query) {
+                const searchTerm = query.toLowerCase();
+                const eventCards = document.querySelectorAll('.collection-card');
+                
+                eventCards.forEach(card => {
+                    const title = card.querySelector('.collection-name').textContent.toLowerCase();
+                    const description = card.querySelector('.collection-info div:not(.collection-price)').textContent.toLowerCase();
+                    
+                    if (title.includes(searchTerm) || description.includes(searchTerm)) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+                
+                // Show section titles if any results found
+                document.querySelectorAll('[class$="-section"]').forEach(section => {
+                    const hasVisibleCards = Array.from(section.querySelectorAll('.collection-card'))
+                        .some(card => card.style.display !== 'none');
+                    
+                    section.style.display = hasVisibleCards ? 'block' : 'none';
+                });
+            }
+            </script>
         
         <div class="action-buttons">
             <button class="btn btn-primary" id="walletConnect"><span>Connect wallet</span></button>
