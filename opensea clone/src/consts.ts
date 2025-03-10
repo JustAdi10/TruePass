@@ -29,7 +29,7 @@ export const STATS_TABLE = [
 ]
 
 export const FOOTER_MARKETPLACE = ['All NFTs', 'Art', 'Gaming', 'Memberships', 'PFPs', 'Photography']
-export const FOOTER_MYACCOUNT = ['Profile', 'Favorites', 'Watchlist', 'My Collections', 'Create', 'OpenSea Pro', 'Settings']
+export const FOOTER_MYACCOUNT = ['Profile', 'Favorites', 'Watchlist', 'My Collections', 'Create', 'TruePass Pro', 'Settings']
 export const FOOTER_STATS = ['Rankings', 'Activity']
 export const FOOTER_RESOURCES = [
   'Blog',
@@ -46,8 +46,8 @@ export const FOOTER_LEARN = [
   'What is an NFT?',
   'How to buy an NFT',
   'What are NFT drops?',
-  'How to sell an NFT using OpenSea',
-  'How to create an NFT on OpenSea',
+  'How to sell an NFT using TruePass',
+  'How to create an NFT on TruePass',
   'What is a crypto wallet?',
   'What is cryptocurrency?',
   'What are blockchain gas fees?',

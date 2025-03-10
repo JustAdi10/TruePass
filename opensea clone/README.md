@@ -1,10 +1,10 @@
-# OpenSea UI Clone
+# TruePass UI Clone
 
 ![Preview](./public/screenshot.png)
 
-This repository contains a clone of the OpenSea UI home page, built using Vite, React, Tailwind CSS, and Swiper. The clone aims to replicate the user interface of the OpenSea platform's home page.
+This repository contains a clone of the TruePass UI home page, built using Vite, React, Tailwind CSS, and Swiper. The clone aims to replicate the user interface of the TruePass platform's home page.
 
-**Demo:** https://opensea-ui-clone.pages.dev/
+**Demo:** https://TruePass-ui-clone.pages.dev/
 
 ## Table of Contents
 
@@ -23,18 +23,18 @@ This repository contains a clone of the OpenSea UI home page, built using Vite, 
 
 ## Installation
 
-To run the OpenSea UI Clone locally, follow these steps:
+To run the TruePass UI Clone locally, follow these steps:
 
 1. Clone this repository to your local machine using the following command:
 
 ```
-git clone https://github.com/MrHeyLey/opensea-ui-clone.git
+git clone https://github.com/MrHeyLey/TruePass-ui-clone.git
 ```
 
 2. Navigate to the project directory:
 
 ```
-cd opensea-ui-clone
+cd TruePass-ui-clone
 ```
 
 3. Install the required dependencies using npm, yarn or pnpm:
@@ -53,6 +53,6 @@ npm run dev
 
 ## Usage
 
-The OpenSea UI Clone provides a visual representation of the OpenSea platform's home page. You can explore the design, layout, and UI elements implemented in the clone. However, please note that it does not include the actual functionality of the original OpenSea platform.
+The TruePass UI Clone provides a visual representation of the TruePass platform's home page. You can explore the design, layout, and UI elements implemented in the clone. However, please note that it does not include the actual functionality of the original TruePass platform.
 
 Feel free to customize the codebase, add additional functionality, or integrate it with other projects as needed.
