@@ -83,9 +83,9 @@ export default function Footer() {
         </div>
         <div className="border-t border-white/20 py-8">
           <p className="text-center text-xs font-light">
-            Cloned by{' '}
-            <a href="https://heyley.dev" target="_blank" className="font-normal underline decoration-teal-500">
-              heyley.dev
+            TruePass{' '}
+            <a href="https://github.com/JustAdi10/TruePass.git" target="_blank" className="font-normal underline decoration-teal-500">
+              inc
             </a>
           </p>
         </div>
