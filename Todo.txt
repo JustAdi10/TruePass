@@ -3,6 +3,6 @@ Tasks:
         
 
     Backend:
-        review 2 : make sure all pages are linked to mongo and functional
-        review 3 : ticket deployment and server side implementation
-        review 4 : deployment
+        review 2 : make sure all pages are linked to mongo and functional (1.5H)
+        review 3 : ticket deployment and server side implementation       (1.0H)
+        review 4 : deployment                                             (2.5H)
