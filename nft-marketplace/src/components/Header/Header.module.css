@@ -1,0 +1,39 @@
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 30px;
+    background: linear-gradient(
+      to bottom right,
+      rgba(12, 12, 29, 0.8),
+      rgba(12, 12, 29, 0.8)
+    );
+  }
+  
+  .logoSection {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 22px;
+    font-weight: bold;
+  }
+  
+  .logoIcon {
+    width: 40px;
+    height: 40px;
+    background-color: #2081e2;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    box-shadow: 0 0 15px rgba(32, 129, 226, 0.5);
+  }
+  
+  /* Add remaining styles */
