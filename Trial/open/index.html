@@ -14,7 +14,9 @@
         
         body {
             background-color: #0c0c1d;
+            background-image: linear-gradient(to bottom right, #0c0c1d, #1a1a3a);
             color: white;
+            min-height: 100vh;
         }
         
         header {
@@ -23,6 +25,11 @@
             justify-content: space-between;
             padding: 20px 30px;
             border-bottom: 1px solid #222236;
+            backdrop-filter: blur(5px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background-color: rgba(12, 12, 29, 0.8);
         }
         
         .logo-section {
@@ -48,6 +55,7 @@
             align-items: center;
             justify-content: center;
             color: white;
+            box-shadow: 0 0 15px rgba(32, 129, 226, 0.5);
         }
         
         .search-bar {
@@ -60,11 +68,18 @@
         .search-bar input {
             width: 100%;
             padding: 12px 20px;
+            padding-left: 45px;
             border-radius: 12px;
             border: none;
             background-color: #1b1b2e;
             color: white;
             font-size: 16px;
+            transition: all 0.3s ease;
+        }
+        
+        .search-bar input:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px #2081e2;
         }
         
         .search-icon {
@@ -86,6 +101,12 @@
             border-radius: 12px;
             font-weight: bold;
             cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
         
         .btn-primary {
@@ -94,10 +115,18 @@
             border: none;
         }
         
+        .btn-primary:hover {
+            background-color: #1371cc;
+        }
+        
         .btn-outline {
             background-color: transparent;
             border: 1px solid #2081e2;
             color: #2081e2;
+        }
+        
+        .btn-outline:hover {
+            background-color: rgba(32, 129, 226, 0.1);
         }
         
         .icon-btn {
@@ -109,6 +138,12 @@
             align-items: center;
             justify-content: center;
             cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .icon-btn:hover {
+            background-color: #2a2a45;
+            transform: translateY(-2px);
         }
         
         .categories {
@@ -116,6 +151,22 @@
             gap: 15px;
             padding: 20px 30px;
             overflow-x: auto;
+            scrollbar-width: thin;
+            scrollbar-color: #2081e2 #1b1b2e;
+        }
+        
+        .categories::-webkit-scrollbar {
+            height: 5px;
+        }
+        
+        .categories::-webkit-scrollbar-track {
+            background: #1b1b2e;
+            border-radius: 10px;
+        }
+        
+        .categories::-webkit-scrollbar-thumb {
+            background-color: #2081e2;
+            border-radius: 10px;
         }
         
         .category {
@@ -124,43 +175,61 @@
             border-radius: 20px;
             cursor: pointer;
             white-space: nowrap;
+            transition: all 0.3s ease;
+        }
+        
+        .category:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
         
         .category.active {
-            background-color: #3d3d56;
+            background-color: #2081e2;
+            box-shadow: 0 0 15px rgba(32, 129, 226, 0.3);
         }
         
         .collections-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 20px;
+            gap: 25px;
             padding: 20px 30px;
         }
         
         .collection-card {
-            border-radius: 12px;
+            border-radius: 16px;
             overflow: hidden;
             background-color: #1b1b2e;
-            transition: transform 0.3s;
+            transition: all 0.3s;
+            border: 1px solid transparent;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            position: relative;
         }
         
         .collection-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-8px);
+            box-shadow: 0 10px 25px rgba(32, 129, 226, 0.2);
+            border-color: rgba(32, 129, 226, 0.3);
+        }
+        
+        .collection-card:hover .collection-image {
+            transform: scale(1.05);
         }
         
         .collection-image {
             height: 250px;
             width: 100%;
             object-fit: cover;
+            transition: transform 0.5s ease;
         }
         
         .collection-info {
-            padding: 15px;
+            padding: 18px;
         }
         
         .collection-name {
             font-weight: bold;
             margin-bottom: 10px;
+            font-size: 18px;
         }
         
         .collection-price {
@@ -181,19 +250,41 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 30px;
+            padding: 30px 30px 20px;
             font-size: 24px;
             font-weight: bold;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 10px;
+            left: 30px;
+            width: 50px;
+            height: 3px;
+            background-color: #2081e2;
+            border-radius: 3px;
         }
         
         .view-all {
             font-size: 16px;
             color: #2081e2;
             cursor: pointer;
+            transition: color 0.3s;
+        }
+        
+        .view-all:hover {
+            color: #1371cc;
+            text-decoration: underline;
         }
         
         .trending-section {
             padding: 20px 30px;
+            background-color: rgba(27, 27, 46, 0.5);
+            margin: 20px 30px;
+            border-radius: 16px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
         }
         
         .trend-tabs {
@@ -207,21 +298,27 @@
             font-size: 18px;
             padding-bottom: 10px;
             border-bottom: 2px solid transparent;
+            transition: all 0.3s;
         }
         
         .trend-tab.active {
             color: white;
-            border-color: white;
+            border-color: #2081e2;
         }
         
         .trend-tab:not(.active) {
             color: #8a8a9b;
         }
         
+        .trend-tab:hover:not(.active) {
+            color: #bbbbc3;
+        }
+        
         .time-filters {
             display: flex;
             gap: 10px;
             margin-bottom: 20px;
+            flex-wrap: wrap;
         }
         
         .time-filter {
@@ -230,10 +327,16 @@
             background-color: #1b1b2e;
             font-size: 14px;
             cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .time-filter:hover:not(.active) {
+            background-color: #2a2a45;
         }
         
         .time-filter.active {
             background-color: #2081e2;
+            box-shadow: 0 0 10px rgba(32, 129, 226, 0.3);
         }
         
         .trending-table {
@@ -253,6 +356,7 @@
         
         .trending-table tr {
             border-bottom: 1px solid #222236;
+            transition: background-color 0.3s;
         }
         
         .trending-table tr:hover {
@@ -270,6 +374,11 @@
             height: 50px;
             border-radius: 10px;
             object-fit: cover;
+            transition: transform 0.3s;
+        }
+        
+        .collection-row:hover img {
+            transform: scale(1.1);
         }
         
         .trending-number {
@@ -277,6 +386,528 @@
             width: 30px;
         }
         
+        .section-header {
+            text-align: center;
+            padding: 40px 0 20px;
+            margin-top: 20px;
+            position: relative;
+        }
+        
+        .section-header h2 {
+            font-size: 32px;
+            margin-bottom: 10px;
+            background: linear-gradient(to right, #2081e2, #8354e6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+        }
+        
+        .section-header p {
+            color: #8a8a9b;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .section-header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(to right, #2081e2, #8354e6);
+            border-radius: 3px;
+        }
+        
+        .concert-section {
+            background: linear-gradient(rgba(12, 12, 29, 0.9), rgba(12, 12, 29, 0.9)), url('/api/placeholder/1920/1080');
+            background-size: cover;
+            background-position: center;
+            padding: 20px 0;
+            background-attachment: fixed;
+        }
+        
+        .sports-section {
+            background: linear-gradient(rgba(12, 12, 29, 0.9), rgba(12, 12, 29, 0.9)), url('/api/placeholder/1920/1080');
+            background-size: cover;
+            background-position: center;
+            padding: 20px 0;
+            background-attachment: fixed;
+        }
+        
+        .parties-section {
+            background: linear-gradient(rgba(12, 12, 29, 0.9), rgba(12, 12, 29, 0.9)), url('/api/placeholder/1920/1080');
+            background-size: cover;
+            background-position: center;
+            padding: 20px 0;
+            background-attachment: fixed;
+        }
+        
+        .badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #2081e2;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 10px;
+            font-size: 12px;
+            font-weight: bold;
+            z-index: 1;
+        }
+        
+        .live-badge {
+            background-color: #f34747;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .pulse {
+            width: 8px;
+            height: 8px;
+            background-color: white;
+            border-radius: 50%;
+            animation: pulse 1.5s infinite;
+        }
+        
+        @keyframes pulse {
+            0% {
+                transform: scale(0.8);
+                opacity: 0.8;
+            }
+            50% {
+                transform: scale(1.2);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(0.8);
+                opacity: 0.8;
+            }
+        }
+        
+        .footer {
+            margin-top: 50px;
+            background-color: #0a0a18;
+            padding: 30px;
+            text-align: center;
+            border-top: 1px solid #222236;
+        }
+        
+        .footer-logo {
+            margin-bottom: 20px;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .footer-link {
+            color: #8a8a9b;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-link:hover {
+            color: #2081e2;
+        }
+        
+        .footer-copyright {
+            color: #8a8a9b;
+            font-size: 14px;
+        }
+        
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            overflow: auto;
+            animation: fadeIn 0.3s;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .modal-content {
+            background-color: #1b1b2e;
+            margin: 50px auto;
+            width: 90%;
+            max-width: 800px;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            animation: slideIn 0.3s;
+            overflow: hidden;
+        }
+        
+        @keyframes slideIn {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        
+        .modal-header {
+            padding: 20px;
+            border-bottom: 1px solid #222236;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .modal-title {
+            font-size: 22px;
+            font-weight: bold;
+        }
+        
+        .modal-close {
+            font-size: 28px;
+            cursor: pointer;
+            color: #8a8a9b;
+            transition: color 0.3s;
+        }
+        
+        .modal-close:hover {
+            color: white;
+        }
+        
+        .modal-body {
+            padding: 20px;
+        }
+        
+        .modal-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-bottom: 20px;
+        }
+        
+        .event-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        .detail-group {
+            margin-bottom: 15px;
+        }
+        
+        .detail-label {
+            color: #8a8a9b;
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+        
+        .detail-value {
+            font-weight: bold;
+            font-size: 16px;
+        }
+        
+        .modal-actions {
+            padding: 20px;
+            border-top: 1px solid #222236;
+            display: flex;
+            justify-content: flex-end;
+            gap: 15px;
+        }
+        
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #2081e2;
+            color: white;
+            padding: 15px 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            transform: translateX(150%);
+            transition: transform 0.3s ease;
+        }
+        
+        .notification.show {
+            transform: translateX(0);
+        }
+        
+        /* Newsletter section */
+        .newsletter-section {
+            background-color: rgba(27, 27, 46, 0.5);
+            margin: 40px 30px;
+            padding: 40px;
+            border-radius: 16px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .newsletter-title {
+            font-size: 28px;
+            margin-bottom: 10px;
+            background: linear-gradient(to right, #2081e2, #8354e6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+        }
+        
+        .newsletter-form {
+            display: flex;
+            max-width: 600px;
+            margin: 30px auto 0;
+        }
+        
+        .newsletter-form input {
+            flex: 1;
+            padding: 14px 20px;
+            border-radius: 12px 0 0 12px;
+            border: none;
+            background-color: #1b1b2e;
+            color: white;
+            font-size: 16px;
+        }
+        
+        .newsletter-form input:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px #2081e2;
+        }
+        
+        .newsletter-form button {
+            padding: 0 25px;
+            border-radius: 0 12px 12px 0;
+            background-color: #2081e2;
+            color: white;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .newsletter-form button:hover {
+            background-color: #1371cc;
+        }
+        
+        /* Animations */
+        .fade-in {
+            animation: fadeIn 1s;
+        }
+        
+        .slide-up {
+            animation: slideUp 0.8s;
+        }
+        
+        @keyframes slideUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        
+        /* Carousel */
+        .carousel {
+            position: relative;
+            margin: 30px 0;
+        }
+        
+        .carousel-container {
+            overflow: hidden;
+        }
+        
+        .carousel-track {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+        
+        .carousel-item {
+            flex: 0 0 100%;
+            padding: 0 10px;
+        }
+        
+        .carousel-nav {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        .carousel-indicator {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: #1b1b2e;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .carousel-indicator.active {
+            background-color: #2081e2;
+        }
+        
+        .carousel-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 40px;
+            height: 40px;
+            background-color: rgba(32, 129, 226, 0.8);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10;
+            transition: all 0.3s;
+        }
+        
+        .carousel-arrow:hover {
+            background-color: #2081e2;
+            transform: translateY(-50%) scale(1.1);
+        }
+        
+        .carousel-arrow.prev {
+            left: 10px;
+        }
+        
+        .carousel-arrow.next {
+            right: 10px;
+        }
+        
+        /* Countdown timer */
+        .countdown {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        
+        .countdown-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .countdown-value {
+            font-size: 22px;
+            font-weight: bold;
+            background-color: #1b1b2e;
+            padding: 10px 15px;
+            border-radius: 10px;
+            min-width: 60px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .countdown-label {
+            font-size: 12px;
+            color: #8a8a9b;
+            margin-top: 5px;
+        }
+        
+        /* Wallet connect modal */
+        .wallet-options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .wallet-option {
+            background-color: #22223a;
+            border-radius: 12px;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .wallet-option:hover {
+            background-color: #2a2a45;
+            transform: translateY(-2px);
+        }
+        
+        .wallet-icon {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
+        }
+        
+        .wallet-name {
+            font-weight: bold;
+        }
+        
+        /* Loading spinner */
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid rgba(32, 129, 226, 0.3);
+            border-top: 4px solid #2081e2;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Hero section */
+        .hero-section {
+            position: relative;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            margin-bottom: 40px;
+        }
+        
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('/api/placeholder/1920/1080') center/cover no-repeat;
+            filter: brightness(0.4) blur(5px);
+            z-index: -1;
+        }
+        
+        .hero-content {
+            text-align: center;
+            max-width: 800px;
+            padding: 0 20px;
+            z-index: 1;
+        }
+        
+        .hero-title {
+            font-size: 42px;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+        
+        .hero-subtitle {
+            font-size: 18px;
+            margin-bottom: 30px;
+            color: #bbbbc3;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        /* Mobile styles */
         @media (max-width: 768px) {
             .search-bar {
                 display: none;
@@ -284,6 +915,92 @@
             
             .collections-grid {
                 grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+                gap: 15px;
+                padding: 15px;
+            }
+            
+            .section-title {
+                padding: 20px 15px 10px;
+                font-size: 20px;
+            }
+            
+            .section-title::after {
+                left: 15px;
+            }
+            
+            .trending-section {
+                margin: 15px;
+                padding: 15px;
+            }
+            
+            .section-header h2 {
+                font-size: 24px;
+            }
+            
+            .header {
+                padding: 15px;
+            }
+            
+            .trending-table th:nth-child(4),
+            .trending-table td:nth-child(4) {
+                display: none;
+            }
+            
+            .btn-primary {
+                font-size: 14px;
+                padding: 8px 15px;
+            }
+            
+            .hero-title {
+                font-size: 32px;
+            }
+            
+            .hero-section {
+                height: 400px;
+            }
+            
+            .event-details {
+                grid-template-columns: 1fr;
+            }
+            
+            .wallet-options {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .action-buttons .btn-primary span {
+                display: none;
+            }
+            
+            .action-buttons .btn-primary::before {
+                content: '💼';
+            }
+            
+            .logo-section .btn-primary {
+                display: none;
+            }
+            
+            .collections-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .trending-table th:nth-child(3),
+            .trending-table td:nth-child(3) {
+                display: none;
+            }
+            
+            .category {
+                padding: 8px 12px;
+                font-size: 14px;
+            }
+            
+            .hero-title {
+                font-size: 28px;
+            }
+            
+            .hero-subtitle {
+                font-size: 16px;
             }
         }
     </style>
@@ -292,96 +1009,140 @@
     <header>
         <div class="logo-section">
             <div class="logo">
-                <div class="logo-icon">🌊</div>
-                OpenSea
+                <div class="logo-icon">🎟️</div>
+                EventNFT
             </div>
             <button class="btn btn-primary">Host</button>
         </div>
         
         <div class="search-bar">
-            <input type="text" placeholder="Search items, collections, and accounts">
+            <span class="search-icon">🔍</span>
+            <input type="text" placeholder="Search events, collections, and accounts">
         </div>
         
         <div class="action-buttons">
-            <button class="btn btn-primary">Connect wallet</button>
+            <button class="btn btn-primary" id="walletConnect"><span>Connect wallet</span></button>
             <div class="icon-btn">👤</div>
-            <div class="icon-btn">🛒</div>
+            <div class="icon-btn" id="cartButton">🛒</div>
         </div>
     </header>
+    
+    <div class="hero-section fade-in">
+        <div class="hero-bg"></div>
+        <div class="hero-content slide-up">
+            <h1 class="hero-title">Discover, Collect, and Trade Event NFTs</h1>
+            <p class="hero-subtitle">The ultimate marketplace for digital event tickets and experiences powered by blockchain technology</p>
+            <div class="hero-buttons">
+                <button class="btn btn-primary">Explore Events</button>
+                <button class="btn btn-outline">Learn More</button>
+            </div>
+        </div>
+    </div>
     
     <div class="categories">
         <div class="category active">All</div>
         <div class="category">Concerts</div>
         <div class="category">Parties</div>
         <div class="category">Sports</div>
+        <div class="category">Festivals</div>
+        <div class="category">Theater</div>
+        <div class="category">Exhibitions</div>
+        <div class="category">Conferences</div>
+    </div>
+    
+    <div class="section-title">
+        <div>Featured Events</div>
+        <div class="view-all">View All</div>
     </div>
     
     <div class="collections-grid">
-        <div class="collection-card">
-            <img src="/api/placeholder/400/320" alt="Anime character with blue hair" class="collection-image">
+        <div class="collection-card" onclick="openModal('concert1')">
+            <div class="badge">Featured</div>
+            <img class="collection-image" src="/api/placeholder/400/250" alt="Concert Event">
             <div class="collection-info">
-                <div class="collection-name">Collection Name</div>
+                <div class="collection-name">Summer Music Festival 2025</div>
+                <div>Featuring top artists and bands</div>
                 <div class="collection-price">
                     <div>
-                        <div>Floor</div>
-                        <div class="price-value">0.03 ETH</div>
+                        <div>Floor Price</div>
+                        <div class="price-value">0.8 ETH</div>
+                    </div>
+                    <div>
+                        <div>Date</div>
+                        <div class="price-value">Apr 15, 2025</div>
                     </div>
                 </div>
             </div>
         </div>
         
-        <div class="collection-card">
-            <img src="/api/placeholder/400/320" alt="Mountain with cross" class="collection-image">
+        <div class="collection-card" onclick="openModal('sports1')">
+            <div class="badge live-badge"><div class="pulse"></div>LIVE</div>
+            <img class="collection-image" src="/api/placeholder/400/250" alt="Sports Event">
             <div class="collection-info">
-                <div class="collection-name">Collection Name</div>
+                <div class="collection-name">Championship Finals</div>
+                <div>Season finale basketball championship</div>
                 <div class="collection-price">
                     <div>
-                        <div>Floor</div>
-                        <div class="price-value">0.03 ETH</div>
+                        <div>Floor Price</div>
+                        <div class="price-value">1.2 ETH</div>
+                    </div>
+                    <div>
+                        <div>Date</div>
+                        <div class="price-value">Mar 20, 2025</div>
                     </div>
                 </div>
             </div>
         </div>
         
-        <div class="collection-card">
-            <img src="/api/placeholder/400/320" alt="Surreal art in field" class="collection-image">
+        <div class="collection-card" onclick="openModal('party1')">
+            <img class="collection-image" src="/api/placeholder/400/250" alt="Party Event">
             <div class="collection-info">
-                <div class="collection-name">Collection Name</div>
+                <div class="collection-name">Neon Night Party</div>
+                <div>The ultimate VIP clubbing experience</div>
                 <div class="collection-price">
                     <div>
-                        <div>Floor</div>
-                        <div class="price-value">0.03 ETH</div>
+                        <div>Floor Price</div>
+                        <div class="price-value">0.5 ETH</div>
+                    </div>
+                    <div>
+                        <div>Date</div>
+                        <div class="price-value">Apr 02, 2025</div>
                     </div>
                 </div>
             </div>
         </div>
         
-        <div class="collection-card">
-            <img src="/api/placeholder/400/320" alt="Abstract portrait" class="collection-image">
+        <div class="collection-card" onclick="openModal('exhibition1')">
+            <img class="collection-image" src="/api/placeholder/400/250" alt="Exhibition Event">
             <div class="collection-info">
-                <div class="collection-name">Collection Name</div>
+                <div class="collection-name">Digital Art Exhibition</div>
+                <div>Showcasing the future of digital art</div>
                 <div class="collection-price">
                     <div>
-                        <div>Floor</div>
-                        <div class="price-value">0.03 ETH</div>
+                        <div>Floor Price</div>
+                        <div class="price-value">0.3 ETH</div>
+                    </div>
+                    <div>
+                        <div>Date</div>
+                        <div class="price-value">May 10, 2025</div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
     
-    <div class="trending-section">
+    <div class="trending-section fade-in">
         <div class="trend-tabs">
             <div class="trend-tab active">Trending</div>
-            <div class="trend-tab">Top</div>
+            <div class="trend-tab">Top Sales</div>
+            <div class="trend-tab">Upcoming</div>
         </div>
         
         <div class="time-filters">
-            <div class="time-filter active">1h</div>
-            <div class="time-filter">6h</div>
-            <div class="time-filter">24h</div>
+            <div class="time-filter active">24h</div>
             <div class="time-filter">7d</div>
-            <div class="time-filter">View All</div>
+            <div class="time-filter">30d</div>
+            <div class="time-filter">All Time</div>
         </div>
         
         <table class="trending-table">
@@ -389,8 +1150,10 @@
                 <tr>
                     <th>#</th>
                     <th>Collection</th>
-                    <th>Floor price</th>
                     <th>Volume</th>
+                    <th>Floor Price</th>
+                    <th>Owners</th>
+                    <th>Items</th>
                 </tr>
             </thead>
             <tbody>
@@ -398,279 +1161,553 @@
                     <td class="trending-number">1</td>
                     <td>
                         <div class="collection-row">
-                            <img src="/api/placeholder/100/100" alt="Cartoon character">
-                            <span>Collection Name</span>
+                            <img src="/api/placeholder/100/100" alt="Collection">
+                            <div>World Cup Finals 2025</div>
                         </div>
                     </td>
-                    <td>0.03 ETH</td>
-                    <td>25 ETH</td>
+                    <td>845 ETH</td>
+                    <td>1.5 ETH</td>
+                    <td>12.5K</td>
+                    <td>50K</td>
                 </tr>
-                
                 <tr>
                     <td class="trending-number">2</td>
                     <td>
                         <div class="collection-row">
-                            <img src="/api/placeholder/100/100" alt="Colorful character">
-                            <span>Collection Name</span>
+                            <img src="/api/placeholder/100/100" alt="Collection">
+                            <div>Global Music Awards</div>
                         </div>
                     </td>
-                    <td>0.03 ETH</td>
-                    <td>25 ETH</td>
+                    <td>742 ETH</td>
+                    <td>0.8 ETH</td>
+                    <td>8.2K</td>
+                    <td>25K</td>
                 </tr>
-                
                 <tr>
                     <td class="trending-number">3</td>
                     <td>
                         <div class="collection-row">
-                            <img src="/api/placeholder/100/100" alt="Purple figure">
-                            <span>Collection Name</span>
+                            <img src="/api/placeholder/100/100" alt="Collection">
+                            <div>Comic Convention</div>
                         </div>
                     </td>
-                    <td>0.03 ETH</td>
-                    <td>25 ETH</td>
+                    <td>510 ETH</td>
+                    <td>0.4 ETH</td>
+                    <td>15K</td>
+                    <td>30K</td>
                 </tr>
-                
                 <tr>
                     <td class="trending-number">4</td>
                     <td>
                         <div class="collection-row">
-                            <img src="/api/placeholder/100/100" alt="Blue wave">
-                            <span>Collection Name</span>
+                            <img src="/api/placeholder/100/100" alt="Collection">
+                            <div>Tech Conference 2025</div>
                         </div>
                     </td>
-                    <td>0.03 ETH</td>
-                    <td>25 ETH</td>
+                    <td>320 ETH</td>
+                    <td>0.6 ETH</td>
+                    <td>7.8K</td>
+                    <td>12K</td>
                 </tr>
-                
                 <tr>
                     <td class="trending-number">5</td>
                     <td>
                         <div class="collection-row">
-                            <img src="/api/placeholder/100/100" alt="Anime character">
-                            <span>Collection Name</span>
+                            <img src="/api/placeholder/100/100" alt="Collection">
+                            <div>Summer Festival Pass</div>
                         </div>
                     </td>
-                    <td>0.03 ETH</td>
-                    <td>25 ETH</td>
+                    <td>280 ETH</td>
+                    <td>0.35 ETH</td>
+                    <td>9.4K</td>
+                    <td>20K</td>
                 </tr>
             </tbody>
         </table>
     </div>
     
-    <div class="section-title">
-        <div>Notable Collections</div>
-        <div class="view-all">View All</div>
+    <div class="section-header slide-up">
+        <h2>Popular Categories</h2>
+        <p>Explore the most popular event categories in our marketplace</p>
     </div>
     
-    <div class="collections-grid">
-        <div class="collection-card">
-            <img src="/api/placeholder/400/320" alt="Character with blue hair" class="collection-image">
-            <div class="collection-info">
-                <div class="collection-name">Collection Name</div>
-                <div class="collection-price">
-                    <div>
-                        <div>Floor</div>
-                        <div class="price-value">0.03 ETH</div>
-                    </div>
-                    <div>
-                        <div>24h Volume</div>
-                        <div class="price-value">25 ETH</div>
+    <div class="concert-section">
+        <div class="section-title">
+            <div>Concerts & Music Events</div>
+            <div class="view-all">View All</div>
+        </div>
+        
+        <div class="collections-grid">
+            <div class="collection-card">
+                <img class="collection-image" src="/api/placeholder/400/250" alt="Rock Concert">
+                <div class="collection-info">
+                    <div class="collection-name">Rock Festival 2025</div>
+                    <div>Featuring legendary rock bands</div>
+                    <div class="collection-price">
+                        <div>
+                            <div>Floor Price</div>
+                            <div class="price-value">0.7 ETH</div>
+                        </div>
+                        <div>
+                            <div>Date</div>
+                            <div class="price-value">Jun 5, 2025</div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        
-        <div class="collection-card">
-            <img src="/api/placeholder/400/320" alt="Blue wave" class="collection-image">
-            <div class="collection-info">
-                <div class="collection-name">Collection Name</div>
-                <div class="collection-price">
-                    <div>
-                        <div>Floor</div>
-                        <div class="price-value">0.03 ETH</div>
-                    </div>
-                    <div>
-                        <div>24h Volume</div>
-                        <div class="price-value">25 ETH</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="collection-card">
-            <img src="/api/placeholder/400/320" alt="Colorful character" class="collection-image">
-            <div class="collection-info">
-                <div class="collection-name">Collection Name</div>
-                <div class="collection-price">
-                    <div>
-                        <div>Floor</div>
-                        <div class="price-value">0.03 ETH</div>
-                    </div>
-                    <div>
-                        <div>24h Volume</div>
-                        <div class="price-value">25 ETH</div>
+            
+            <div class="collection-card">
+                <img class="collection-image" src="/api/placeholder/400/250" alt="EDM Festival">
+                <div class="collection-info">
+                    <div class="collection-name">EDM Night</div>
+                    <div>Electronic dance music extravaganza</div>
+                    <div class="collection-price">
+                        <div>
+                            <div>Floor Price</div>
+                            <div class="price-value">0.5 ETH</div>
+                        </div>
+                        <div>
+                            <div>Date</div>
+                            <div class="price-value">Apr 18, 2025</div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        
-        <div class="collection-card">
-            <img src="/api/placeholder/400/320" alt="Purple figure" class="collection-image">
-            <div class="collection-info">
-                <div class="collection-name">Collection Name</div>
-                <div class="collection-price">
-                    <div>
-                        <div>Floor</div>
-                        <div class="price-value">0.03 ETH</div>
-                    </div>
-                    <div>
-                        <div>24h Volume</div>
-                        <div class="price-value">25 ETH</div>
+            
+            <div class="collection-card">
+                <img class="collection-image" src="/api/placeholder/400/250" alt="Jazz Concert">
+                <div class="collection-info">
+                    <div class="collection-name">Jazz & Blues Night</div>
+                    <div>Smooth jazz and blues performances</div>
+                    <div class="collection-price">
+                        <div>
+                            <div>Floor Price</div>
+                            <div class="price-value">0.4 ETH</div>
+                        </div>
+                        <div>
+                            <div>Date</div>
+                            <div class="price-value">May 22, 2025</div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        
-        <div class="collection-card">
-            <img src="/api/placeholder/400/320" alt="Cartoon character" class="collection-image">
-            <div class="collection-info">
-                <div class="collection-name">Collection Name</div>
-                <div class="collection-price">
-                    <div>
-                        <div>Floor</div>
-                        <div class="price-value">0.03 ETH</div>
-                    </div>
-                    <div>
-                        <div>24h Volume</div>
-                        <div class="price-value">25 ETH</div>
+            
+            <div class="collection-card">
+                <img class="collection-image" src="/api/placeholder/400/250" alt="Pop Concert">
+                <div class="collection-info">
+                    <div class="collection-name">Pop Stars Tour</div>
+                    <div>Featuring chart-topping artists</div>
+                    <div class="collection-price">
+                        <div>
+                            <div>Floor Price</div>
+                            <div class="price-value">1.0 ETH</div>
+                        </div>
+                        <div>
+                            <div>Date</div>
+                            <div class="price-value">Jul 10, 2025</div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
     
-    <div class="section-title">
-        <div>Top Collector Buys Today</div>
-        <div class="view-all">View All</div>
+    <div class="newsletter-section fade-in">
+        <div class="newsletter-title">Stay Updated</div>
+        <p>Subscribe to our newsletter and never miss out on exclusive NFT event drops</p>
+        <form class="newsletter-form">
+            <input type="email" placeholder="Enter your email address">
+            <button type="submit">Subscribe</button>
+        </form>
     </div>
     
-    <div class="collections-grid">
-        <div class="collection-card">
-            <img src="/api/placeholder/400/320" alt="Cartoon character" class="collection-image">
-            <div class="collection-info">
-                <div class="collection-name">Collection Name</div>
-                <div class="collection-price">
-                    <div>
-                        <div>Floor</div>
-                        <div class="price-value">0.03 ETH</div>
-                    </div>
-                    <div>
-                        <div>24h Volume</div>
-                        <div class="price-value">25 ETH</div>
+    <div class="sports-section">
+        <div class="section-title">
+            <div>Sports & Games</div>
+            <div class="view-all">View All</div>
+        </div>
+        
+        <div class="collections-grid">
+            <div class="collection-card">
+                <img class="collection-image" src="/api/placeholder/400/250" alt="Football Match">
+                <div class="collection-info">
+                    <div class="collection-name">Championship Football</div>
+                    <div>Season finale match tickets</div>
+                    <div class="collection-price">
+                        <div>
+                            <div>Floor Price</div>
+                            <div class="price-value">1.2 ETH</div>
+                        </div>
+                        <div>
+                            <div>Date</div>
+                            <div class="price-value">May 28, 2025</div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        
-        <div class="collection-card">
-            <img src="/api/placeholder/400/320" alt="Anime character" class="collection-image">
-            <div class="collection-info">
-                <div class="collection-name">Collection Name</div>
-                <div class="collection-price">
-                    <div>
-                        <div>Floor</div>
-                        <div class="price-value">0.03 ETH</div>
-                    </div>
-                    <div>
-                        <div>24h Volume</div>
-                        <div class="price-value">25 ETH</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="collection-card">
-            <img src="/api/placeholder/400/320" alt="Purple figure" class="collection-image">
-            <div class="collection-info">
-                <div class="collection-name">Collection Name</div>
-                <div class="collection-price">
-                    <div>
-                        <div>Floor</div>
-                        <div class="price-value">0.03 ETH</div>
-                    </div>
-                    <div>
-                        <div>24h Volume</div>
-                        <div class="price-value">25 ETH</div>
+            
+            <div class="collection-card">
+                <img class="collection-image" src="/api/placeholder/400/250" alt="Basketball Game">
+                <div class="collection-info">
+                    <div class="collection-name">All-Star Basketball</div>
+                    <div>Annual all-star game tickets</div>
+                    <div class="collection-price">
+                        <div>
+                            <div>Floor Price</div>
+                            <div class="price-value">0.9 ETH</div>
+                        </div>
+                        <div>
+                            <div>Date</div>
+                            <div class="price-value">Apr 12, 2025</div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        
-        <div class="collection-card">
-            <img src="/api/placeholder/400/320" alt="Abstract portrait" class="collection-image">
-            <div class="collection-info">
-                <div class="collection-name">Collection Name</div>
-                <div class="collection-price">
-                    <div>
-                        <div>Floor</div>
-                        <div class="price-value">0.03 ETH</div>
-                    </div>
-                    <div>
-                        <div>24h Volume</div>
-                        <div class="price-value">25 ETH</div>
+            
+            <div class="collection-card">
+                <div class="badge">VIP</div>
+                <img class="collection-image" src="/api/placeholder/400/250" alt="Tennis Match">
+                <div class="collection-info">
+                    <div class="collection-name">Grand Slam Tennis</div>
+                    <div>Premium tickets for final matches</div>
+                    <div class="collection-price">
+                        <div>
+                            <div>Floor Price</div>
+                            <div class="price-value">1.5 ETH</div>
+                        </div>
+                        <div>
+                            <div>Date</div>
+                            <div class="price-value">Jun 30, 2025</div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        
-        <div class="collection-card">
-            <img src="/api/placeholder/400/320" alt="Blue wave" class="collection-image">
-            <div class="collection-info">
-                <div class="collection-name">Collection Name</div>
-                <div class="collection-price">
-                    <div>
-                        <div>Floor</div>
-                        <div class="price-value">0.03 ETH</div>
-                    </div>
-                    <div>
-                        <div>24h Volume</div>
-                        <div class="price-value">25 ETH</div>
+            
+            <div class="collection-card">
+                <img class="collection-image" src="/api/placeholder/400/250" alt="eSports Tournament">
+                <div class="collection-info">
+                    <div class="collection-name">eSports Finals</div>
+                    <div>Global gaming championship</div>
+                    <div class="collection-price">
+                        <div>
+                            <div>Floor Price</div>
+                            <div class="price-value">0.6 ETH</div>
+                        </div>
+                        <div>
+                            <div>Date</div>
+                            <div class="price-value">May 15, 2025</div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    
+    <div class="parties-section">
+        <div class="section-title">
+            <div>Parties & Nightlife</div>
+            <div class="view-all">View All</div>
+        </div>
+        
+        <div class="collections-grid">
+            <div class="collection-card">
+                <img class="collection-image" src="/api/placeholder/400/250" alt="VIP Club Party">
+                <div class="collection-info">
+                    <div class="collection-name">VIP Club Access</div>
+                    <div>Exclusive nightclub experience</div>
+                    <div class="collection-price">
+                        <div>
+                            <div>Floor Price</div>
+                            <div class="price-value">0.4 ETH</div>
+                        </div>
+                        <div>
+                            <div>Date</div>
+                            <div class="price-value">Mar 25, 2025</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="collection-card">
+                <div class="badge">Limited</div>
+                <img class="collection-image" src="/api/placeholder/400/250" alt="Rooftop Party">
+                <div class="collection-info">
+                    <div class="collection-name">Rooftop Sunset Party</div>
+                    <div>Luxury rooftop experience</div>
+                    <div class="collection-price">
+                        <div>
+                            <div>Floor Price</div>
+                            <div class="price-value">0.7 ETH</div>
+                        </div>
+                        <div>
+                            <div>Date</div>
+                            <div class="price-value">Apr 8, 2025</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="collection-card">
+                <img class="collection-image" src="/api/placeholder/400/250" alt="Beach Party">
+                <div class="collection-info">
+                    <div class="collection-name">Beach Festival</div>
+                    <div>All-day beach party and music</div>
+                    <div class="collection-price">
+                        <div>
+                            <div>Floor Price</div>
+                            <div class="price-value">0.5 ETH</div>
+                        </div>
+                        <div>
+                            <div>Date</div>
+                            <div class="price-value">Jul 3, 2025</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="collection-card">
+                <img class="collection-image" src="/api/placeholder/400/250" alt="Themed Party">
+                <div class="collection-info">
+                    <div class="collection-name">80s Retro Night</div>
+                    <div>Throwback themed party experience</div>
+                    <div class="collection-price">
+                        <div>
+                            <div>Floor Price</div>
+                            <div class="price-value">0.3 ETH</div>
+                        </div>
+                        <div>
+                            <div>Date</div>
+                            <div class="price-value">May 18, 2025</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <div class="footer-logo">
+            <div class="logo">
+                <div class="logo-icon">🎟️</div>
+                EventNFT
+            </div>
+        </div>
+        <div class="footer-links">
+            <a href="#" class="footer-link">About</a>
+            <a href="#" class="footer-link">Blog</a>
+            <a href="#" class="footer-link">Help Center</a>
+            <a href="#" class="footer-link">Terms</a>
+            <a href="#" class="footer-link">Privacy Policy</a>
+            <a href="#" class="footer-link">Careers</a>
+            <a href="#" class="footer-link">Contact</a>
+        </div>
+        <div class="footer-copyright">
+            © 2025 EventNFT. All rights reserved.
+        </div>
+    </div>
+    
+    <!-- Event Details Modal -->
+    <div class="modal" id="eventModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title">Event Details</div>
+                <span class="modal-close" onclick="closeModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <img src="/api/placeholder/800/400" alt="Event" class="modal-image" id="modalImage">
+                <h2 id="modalTitle">Event Title</h2>
+                <p id="modalDescription">Event description goes here...</p>
+                
+                <div class="countdown">
+                    <div class="countdown-item">
+                        <div class="countdown-value" id="days">00</div>
+                        <div class="countdown-label">Days</div>
+                    </div>
+                    <div class="countdown-item">
+                        <div class="countdown-value" id="hours">00</div>
+                        <div class="countdown-label">Hours</div>
+                    </div>
+                    <div class="countdown-item">
+                        <div class="countdown-value" id="minutes">00</div>
+                        <div class="countdown-label">Minutes</div>
+                    </div>
+                    <div class="countdown-item">
+                        <div class="countdown-value" id="seconds">00</div>
+                        <div class="countdown-label">Seconds</div>
+                    </div>
+                </div>
+                
+                <div class="event-details">
+                    <div class="detail-group">
+                        <div class="detail-label">Location</div>
+                        <div class="detail-value" id="modalLocation">Event location</div>
+                    </div>
+                    <div class="detail-group">
+                        <div class="detail-label">Date</div>
+                        <div class="detail-value" id="modalDate">Event date</div>
+                    </div>
+                    <div class="detail-group">
+                        <div class="detail-label">Floor Price</div>
+                        <div class="detail-value" id="modalPrice">Event price</div>
+                    </div>
+                    <div class="detail-group">
+                        <div class="detail-label">Supply</div>
+                        <div class="detail-value" id="modalSupply">Event tickets supply</div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-actions">
+                <button class="btn btn-outline" onclick="closeModal()">Close</button>
+                <button class="btn btn-primary">Buy Now</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Wallet Connect Modal -->
+    <div class="modal" id="walletModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title">Connect Your Wallet</div>
+                <span class="modal-close" onclick="closeWalletModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <p>Choose a wallet to connect to EventNFT marketplace:</p>
+                <div class="wallet-options">
+                    <div class="wallet-option">
+                        <img src="/api/placeholder/80/80" alt="MetaMask" class="wallet-icon">
+                        <div class="wallet-name">MetaMask</div>
+                    </div>
+                    <div class="wallet-option">
+                        <img src="/api/placeholder/80/80" alt="Coinbase" class="wallet-icon">
+                        <div class="wallet-name">Coinbase Wallet</div>
+                    </div>
+                    <div class="wallet-option">
+                        <img src="/api/placeholder/80/80" alt="WalletConnect" class="wallet-icon">
+                        <div class="wallet-name">WalletConnect</div>
+                    </div>
+                    <div class="wallet-option">
+                        <img src="/api/placeholder/80/80" alt="Phantom" class="wallet-icon">
+                        <div class="wallet-name">Phantom</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Notification -->
+    <div class="notification" id="notification">Item added to cart!</div>
     
     <script>
-        // JavaScript for interaction
-        document.addEventListener('DOMContentLoaded', function() {
-            // Category selection
-            const categories = document.querySelectorAll('.category');
-            categories.forEach(category => {
-                category.addEventListener('click', function() {
-                    categories.forEach(c => c.classList.remove('active'));
-                    this.classList.add('active');
-                });
-            });
+        // Event modal functionality
+        function openModal(eventId) {
+            const modal = document.getElementById('eventModal');
+            modal.style.display = 'block';
             
-            // Time filter selection
-            const timeFilters = document.querySelectorAll('.time-filter');
-            timeFilters.forEach(filter => {
-                filter.addEventListener('click', function() {
-                    timeFilters.forEach(f => f.classList.remove('active'));
-                    this.classList.add('active');
-                });
-            });
+            // Set event details based on the event ID
+            if (eventId === 'concert1') {
+                document.getElementById('modalTitle').textContent = 'Summer Music Festival 2025';
+                document.getElementById('modalDescription').textContent = 'Experience the ultimate summer music festival featuring top artists and bands from around the world. This exclusive NFT grants you VIP access to all areas.';
+                document.getElementById('modalLocation').textContent = 'Sunshine Park, Miami';
+                document.getElementById('modalDate').textContent = 'April 15, 2025';
+                document.getElementById('modalPrice').textContent = '0.8 ETH';
+                document.getElementById('modalSupply').textContent = '5,000';
+            } else if (eventId === 'sports1') {
+                document.getElementById('modalTitle').textContent = 'Championship Finals';
+                document.getElementById('modalDescription').textContent = 'Witness basketball history at the season finale championship game. This NFT ticket includes premium seating and exclusive memorabilia.';
+                document.getElementById('modalLocation').textContent = 'Stadium Arena, Los Angeles';
+                document.getElementById('modalDate').textContent = 'March 20, 2025';
+                document.getElementById('modalPrice').textContent = '1.2 ETH';
+                document.getElementById('modalSupply').textContent = '3,000';
+            } else if (eventId === 'party1') {
+                document.getElementById('modalTitle').textContent = 'Neon Night Party';
+                document.getElementById('modalDescription').textContent = 'The ultimate VIP clubbing experience with world-famous DJs and unlimited premium drinks. This NFT grants you skip-the-line access.';
+                document.getElementById('modalLocation').textContent = 'Skylight Club, New York';
+                document.getElementById('modalDate').textContent = 'April 2, 2025';
+                document.getElementById('modalPrice').textContent = '0.5 ETH';
+                document.getElementById('modalSupply').textContent = '1,000';
+            } else if (eventId === 'exhibition1') {
+                document.getElementById('modalTitle').textContent = 'Digital Art Exhibition';
+                document.getElementById('modalDescription').textContent = 'Explore the future of digital art at this immersive exhibition featuring renowned NFT artists. Your ticket NFT includes a commemorative digital collectible.';
+                document.getElementById('modalLocation').textContent = 'Modern Gallery, San Francisco';
+                document.getElementById('modalDate').textContent = 'May 10, 2025';
+                document.getElementById('modalPrice').textContent = '0.3 ETH';
+                document.getElementById('modalSupply').textContent = '2,500';
+            }
             
-            // Trend tab selection
-            const trendTabs = document.querySelectorAll('.trend-tab');
-            trendTabs.forEach(tab => {
-                tab.addEventListener('click', function() {
-                    trendTabs.forEach(t => t.classList.remove('active'));
-                    this.classList.add('active');
-                });
-            });
+            // Set countdown
+            startCountdown();
+        }
+        
+        function closeModal() {
+            document.getElementById('eventModal').style.display = 'none';
+        }
+        
+        // Wallet modal
+        document.getElementById('walletConnect').addEventListener('click', function() {
+            document.getElementById('walletModal').style.display = 'block';
         });
+        
+        function closeWalletModal() {
+            document.getElementById('walletModal').style.display = 'none';
+        }
+        
+        // Cart notification
+        document.getElementById('cartButton').addEventListener('click', function() {
+            const notification = document.getElementById('notification');
+            notification.classList.add('show');
+            
+            setTimeout(function() {
+                notification.classList.remove('show');
+            }, 3000);
+        });
+        
+        // Close modals when clicking outside
+        window.onclick = function(event) {
+            const eventModal = document.getElementById('eventModal');
+            const walletModal = document.getElementById('walletModal');
+            
+            if (event.target === eventModal) {
+                eventModal.style.display = 'none';
+            }
+            
+            if (event.target === walletModal) {
+                walletModal.style.display = 'none';
+            }
+        }
+        
+        // Countdown functionality
+        function startCountdown() {
+            // Set the date for the countdown (example: 15 days from now)
+            const countDownDate = new Date();
+            countDownDate.setDate(countDownDate.getDate() + 15);
+            
+            // Update the countdown every 1 second
+            const x = setInterval(function() {
+                const now = new Date().getTime();
+                const distance = countDownDate - now;
+                
+                // Calculate days, hours, minutes and seconds
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                
+                // Display the result
+                document.getElementById("days").innerHTML = days < 10 ? "0" + days : days;
+                document.getElementById("hours").innerHTML = hours < 10 ? "0" + hours : hours;
+                document.getElementById("minutes").innerHTML = minutes < 10 ? "0" + minutes : minutes;
+                document.getElementById("seconds").innerHTML = seconds < 10 ? "0" + seconds : seconds;
+                
+                // If the countdown is finished, clear the interval
+                if (distance < 0) {
+                    clearInterval(x);
+                    document.getElementById("days").innerHTML = "00";
+                    document.getElementById("hours").innerHTML = "00";
+                    document.getElementById("minutes").innerHTML = "00";
+                    document.getElementById("seconds").innerHTML = "00";
+                }
+            }, 1000);
+        }
     </script>
 </body>
 </html>
