@@ -12,54 +12,50 @@
             box-sizing: border-box;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-
         :root {
-            --primary-color: #3a86ff;
-            --secondary-color: #8338ec;
-            --accent-color: #ff006e;
-            --success-color: #38b000;
-            --warning-color: #ffbe0b;
-            --dark-color: #212529;
-            --light-color: #f8f9fa;
-            --gray-color: #6c757d;
-            --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --primary-color: #4da3ff;
+            --secondary-color: #8762ff;
+            --accent-color: #ff3a8c;
+            --success-color: #4cd471;
+            --warning-color: #ffc937;
+            --dark-color: #121b2f;
+            --darker-color: #0a1121;
+            --light-color: #e4e9f7;
+            --gray-color: #8b96a8;
+            --card-bg: #1a2940;
+            --header-bg: #0f172a;
+            --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
             --border-radius: 8px;
             --transition: all 0.3s ease;
         }
-
         body {
-            background-color: #f5f7fa;
-            color: var(--dark-color);
+            background-color: var(--dark-color);
+            color: var(--light-color);
             line-height: 1.6;
         }
-
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 15px;
         }
-
         header {
-            background-color: white;
+            background-color: var(--header-bg);
             box-shadow: var(--box-shadow);
             position: sticky;
             top: 0;
             z-index: 100;
         }
-
         .navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 15px 0;
         }
-
         .logo {
             font-size: 24px;
             font-weight: 700;
             color: var(--primary-color);
         }
-
         .logo span {
             color: var(--accent-color);
         }
@@ -68,22 +64,19 @@
             display: flex;
             gap: 25px;
         }
-
         .nav-links a {
-            color: var(--dark-color);
+            color: var(--light-color);
             text-decoration: none;
             font-weight: 500;
             transition: var(--transition);
         }
-
         .nav-links a:hover {
             color: var(--primary-color);
         }
-
         .btn {
             display: inline-block;
             background-color: var(--primary-color);
-            color: white;
+            color: var(--light-color);
             padding: 10px 20px;
             border-radius: var(--border-radius);
             border: none;
@@ -92,42 +85,35 @@
             transition: var(--transition);
             text-decoration: none;
         }
-
         .btn:hover {
-            background-color: #2a75e6;
+            background-color: #3a8eee;
             transform: translateY(-2px);
         }
-
         .btn-outline {
             background-color: transparent;
             border: 2px solid var(--primary-color);
             color: var(--primary-color);
         }
-
         .btn-outline:hover {
             background-color: var(--primary-color);
-            color: white;
+            color: var(--light-color);
         }
-
         .btn-accent {
             background-color: var(--accent-color);
         }
-
         .btn-accent:hover {
-            background-color: #e6005f;
+            background-color: #ff2176;
         }
-
         .btn-success {
             background-color: var(--success-color);
         }
-
         .btn-success:hover {
-            background-color: #2d9000;
+            background-color: #3bbe5f;
         }
 
         /* Form Styles */
         .form-container {
-            background-color: white;
+            background-color: var(--card-bg);
             border-radius: var(--border-radius);
             box-shadow: var(--box-shadow);
             padding: 40px;
@@ -140,7 +126,7 @@
         .form-title {
             font-size: 24px;
             margin-bottom: 30px;
-            color: var(--dark-color);
+            color: var(--light-color);
             text-align: center;
         }
 
@@ -152,22 +138,32 @@
             display: block;
             margin-bottom: 8px;
             font-weight: 500;
-            color: var(--dark-color);
+            color: var(--light-color);
         }
 
         .form-control {
             width: 100%;
             padding: 12px 15px;
-            border: 1px solid #ddd;
+            border: 1px solid #2d3b54;
             border-radius: var(--border-radius);
             font-size: 16px;
             transition: var(--transition);
+            background-color: var(--darker-color);
+            color: var(--light-color);
         }
 
         .form-control:focus {
             outline: none;
             border-color: var(--primary-color);
-            box-shadow: 0 0 0 2px rgba(58, 134, 255, 0.2);
+            box-shadow: 0 0 0 2px rgba(77, 163, 255, 0.2);
+        }
+
+        select.form-control {
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238b96a8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            background-size: 1em;
         }
 
         textarea.form-control {
@@ -196,17 +192,37 @@
         .form-note {
             margin-top: 30px;
             padding-top: 20px;
-            border-top: 1px solid #eee;
+            border-top: 1px solid #2d3b54;
             font-size: 14px;
             color: var(--gray-color);
             text-align: center;
         }
 
+        /* File input styling */
+        input[type="file"].form-control {
+            padding: 8px;
+        }
+
+        input[type="file"].form-control::file-selector-button {
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            background-color: #2d3b54;
+            color: var(--light-color);
+            margin-right: 16px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        input[type="file"].form-control::file-selector-button:hover {
+            background-color: #3a4a68;
+        }
+
         footer {
-            background-color: white;
+            background-color: var(--header-bg);
             padding: 40px 0;
             margin-top: 60px;
-            box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.2);
         }
 
         .copyright {
