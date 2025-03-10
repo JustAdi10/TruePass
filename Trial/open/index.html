@@ -1108,21 +1108,26 @@
             <h1 class="hero-title">Discover, Collect, and Trade Event NFTs</h1>
             <p class="hero-subtitle">The ultimate marketplace for digital event tickets and experiences powered by blockchain technology</p>
             <div class="hero-buttons">
-                <button class="btn btn-primary">Explore Events</button>
+                <button class="btn btn-primary" onclick="scrollToEvents()">Explore Events</button>
                 <button class="btn btn-outline">Learn More</button>
             </div>
         </div>
     </div>
-    
-    <div class="categories">
-        <div class="category active">All</div>
-        <div class="category">Concerts</div>
-        <div class="category">Parties</div>
-        <div class="category">Sports</div>
-        <div class="category">Festivals</div>
-        <div class="category">Theater</div>
-        <div class="category">Exhibitions</div>
-        <div class="category">Conferences</div>
+    <script>
+    function scrollToEvents() {
+        document.getElementById('eventsSection').scrollIntoView({ 
+            behavior: 'smooth' 
+        });
+    }</script>
+    <div class="categories" id="eventsSection">
+        <div class="category active" data-target="all">All</div>
+        <div class="category" data-target="concerts">Concerts</div>
+        <div class="category" data-target="parties">Parties</div>
+        <div class="category" data-target="sports">Sports</div>
+        <div class="category" data-target="festivals">Festivals</div>
+        <div class="category" data-target="theater">Theater</div>
+        <div class="category" data-target="exhibitions">Exhibitions</div>
+        <div class="category" data-target="conferences">Conferences</div>
     </div>
     
     <div class="section-title">
@@ -1306,7 +1311,7 @@
         <p>Explore the most popular event categories in our marketplace</p>
     </div>
     
-    <div class="concert-section">
+    <div class="concert-section" id="concerts">
         <div class="section-title">
             <div>Concerts & Music Events</div>
             <div class="view-all">View All</div>
@@ -1389,7 +1394,7 @@
     
     
     
-    <div class="sports-section">
+    <div class="sports-section" id="sports">
         <div class="section-title">
             <div>Sports & Games</div>
             <div class="view-all">View All</div>
@@ -1471,11 +1476,38 @@
         </div>
     </div>
     
-    <div class="parties-section">
+    <div class="parties-section" id="parties">
         <div class="section-title">
             <div>Parties & Nightlife</div>
             <div class="view-all">View All</div>
         </div>
+    <script>
+        // Category filtering functionality
+    document.querySelectorAll('.category').forEach(button => {
+    button.addEventListener('click', function() {
+        // Remove active class from all buttons
+        document.querySelectorAll('.category').forEach(btn => btn.classList.remove('active'));
+        
+        // Add active class to clicked button
+        this.classList.add('active');
+        
+        // Get target section ID
+        const target = this.dataset.target;
+        
+        // Show/hide sections
+        document.querySelectorAll('[class$="-section"]').forEach(section => {
+            if(target === 'all' || section.id === target) {
+                section.style.display = 'block';
+            } else {
+                section.style.display = 'none';
+            }
+        });
+    });
+});
+
+// Activate All button by default
+document.querySelector('.category[data-target="all"]').click();
+    </script>
         
         <div class="collections-grid">
             <div class="collection-card">
