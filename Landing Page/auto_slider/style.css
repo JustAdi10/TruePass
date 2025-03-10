@@ -60,3 +60,12 @@ main{
         left: 100%;
     }
 }
+
+.background {
+    background-image: url(959280174640411.64a6f2741a02a.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 80%;
+    height: 100vh;
+}
