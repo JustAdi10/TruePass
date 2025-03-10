@@ -30,22 +30,41 @@
             top: 0;
             z-index: 100;
             background-color: rgba(12, 12, 29, 0.8);
+            flex-wrap: nowrap;
         }
         
         .logo-section {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
-        
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 22px;
-            font-weight: bold;
-        }
-        
+    display: flex;
+    align-items: center;
+    gap: 0; 
+    flex-shrink: 0; /* Prevent shrinking */
+}
+
+/* Add these adjustments */
+.logo {
+    display: inline-flex; /* Change from flex to inline-flex */
+    align-items: center;
+    gap: 10px;
+    font-size: 22px;
+    font-weight: bold;
+    margin-right: 0;
+    white-space: nowrap;
+}
+
+.logo-section a {
+    display: inline-flex;
+    margin-left: 8px; /* Negative margin to collapse spacing */
+    
+}
+
+.btn-primary {
+    padding: 10px 15px;
+    border-radius: 0 12px 12px 0; /* Match logo's right side */
+    border-left: 1px solid rgba(255,255,255,0.2); /* Visual connection */
+    transform: translateX(-8px); /* Pull button left */
+}
+
+
         .logo-icon {
             width: 40px;
             height: 40px;
@@ -56,6 +75,7 @@
             justify-content: center;
             color: white;
             box-shadow: 0 0 15px rgba(32, 129, 226, 0.5);
+            border-radius: 12px 0 0 12px;
         }
         
         .search-bar {

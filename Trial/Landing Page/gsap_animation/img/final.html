@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TruePass Landing</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,900;1,100;1,900&display=swap">
+    <style>
+        /* Component 1 Styles */
+        .lp1-body {
+            margin: 0;
+            background-color: #000000;
+            font-family: Poppins;
+            color: #eee;
+        }
+
+        .lp1-root {
+            --width: min(1200px, 100%);
+        }
+
+        .lp1-header {
+            width: var(--width);
+            margin: auto;
+            height: 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            z-index: 10;
+            padding-inline: 20px;
+        }
+
+        .lp1-banner {
+            position: relative;
+            min-height: 100vh;
+        }
+
+        #lp1-bg_city {
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .lp1-main {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding-block: 5em;
+            gap: 5em;
+            position: relative;
+        }
+
+        /* Component 2 Styles */
+        .lp2-container {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .lp2-background video {
+            position: absolute;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+            filter: brightness(0.9);
+        }
+
+        .lp2-carousel {
+            animation: rotate 20s infinite linear;
+        }
+
+        /* Combined Styles */
+        .get-started-btn {
+            background-color: #eee;
+            color: #000;
+            padding: 12px 36px;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+        }
+
+        @keyframes rotate {
+            from { transform: rotateY(0deg); }
+            to { transform: rotateY(360deg); }
+        }
+
+        /* Add all other styles from both components here */
+        /* ... (include all CSS rules from both files, prefixed with lp1- and lp2-) ... */
+    </style>
+</head>
+<body class="lp1-body">
+    <!-- Component 1 Content -->
+    <header class="lp1-header">
+        <nav>
+            <ul>
+                <li class="active"></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <div class="lp1-banner">
+        <div id="lp1-bg_city"></div>
+        <div class="lp1-content">
+            <div class="lp1-item title">
+                <p style="color: chocolate;">TransParency.</p>
+                <p>TruePass Does that.</p>
+            </div>
+        </div>
+    </div>
+
+    <main class="lp1-main">
+        <div class="lp1-friend">
+            <div class="lp1-me">
+                <h1>TruePass</h1>
+                <h2 style="color: chocolate;">Ticketing. Redefined.</h2>
+            </div>
+        </div>
+
+        <div class="lp1-get-started-container">
+            <a href="#component2" class="get-started-btn">Explore More</a>
+        </div>
+    </main>
+
+    <!-- Component 2 Content -->
+    <div id="component2" class="lp2-container">
+        <div class="lp2-background">
+            <video autoplay muted loop>
+                <source src="video.mp4" type="video/mp4">
+            </video>
+        </div>
+
+        <div class="lp2-header">
+            <div class="lp2-title">True Pass</div>
+            <div class="lp2-subtitle">
+                NFTs: Beyond Just Pictures, Create Your Destiny
+            </div>
+        </div>
+
+        <div class="lp2-carousel-container">
+            <div class="lp2-carousel">
+                <!-- Carousel items here -->
+            </div>
+        </div>
+
+        <div class="lp2-get-started-container">
+            <a href="../auto_slider/index.html" class="get-started-btn">Get Started</a>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script>
+        // Component 1 JS
+        function loadSVG() {
+            fetch("city.svg")
+            .then(response => response.text())
+            .then(svg => {
+                document.getElementById('lp1-bg_city').innerHTML = svg;
+                setAnimationScroll();
+            });
+        }
+        loadSVG();
+
+        // Component 2 JS
+        document.addEventListener('DOMContentLoaded', () => {
+            // Carousel initialization code
+        });
+
+        // Combined initialization
+        gsap.registerPlugin(ScrollTrigger);
+        // Add animation logic here
+    </script>
+</body>
+</html>
