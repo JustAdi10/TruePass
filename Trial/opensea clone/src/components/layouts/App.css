@@ -1,0 +1,36 @@
+.hover-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px 8px;
+    position: relative;
+  }
+  
+  .hover-button::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 50%;
+    background-color: #007bff;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .hover-button:hover::after {
+    width: 100%;
+    left: 0;
+  }
+  
+  .button-text {
+    font-size: 1.2rem;
+    color: #333;
+  }
+  
+  .wallet-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  /* Rest of your existing styles */
