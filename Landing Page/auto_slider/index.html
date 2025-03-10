@@ -30,10 +30,20 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: url('background.jpg'); /* Replace with your background image */
-            background-size: cover;
-            background-position: center;
             filter: brightness(0.9);
+            overflow: hidden;
+        }
+        
+        .background video {
+            position: absolute;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
         }
         
         .header {
@@ -185,8 +195,14 @@
 </head>
 <body>
     <div class="container">
-        <!-- Background Image -->
-        <div class="background"></div>
+        <!-- Video Background -->
+        <div class="background">
+            <video autoplay muted loop>
+                <source src="hero-video-with-multiple-buttons-1700666646-video-ab4ceb1e95742187fe677bf9070cf092638955e28eec6d5b87a3db7455d9948b.mp4" type="video/mp4">
+                <!-- You can add additional source elements for different video formats -->
+                Your browser does not support the video tag.
+            </video>
+        </div>
         
         <!-- Header -->
         <div class="header" style="font-family: 'Poppins', sans-serif;">
@@ -196,7 +212,7 @@
             </div>
         </div>
         
-        <!-- First 3D Carousel
+        <!-- First 3D Carousel -->
         <div class="carousel-container-1">
             <div class="carousel carousel-1">
                 <div class="carousel-item"><img src="images/slider1_1.png" alt="Slider image 1"></div>
@@ -210,7 +226,7 @@
                 <div class="carousel-item"><img src="images/slider1_9.png" alt="Slider image 9"></div>
                 <div class="carousel-item"><img src="images/slider1_10.png" alt="Slider image 10"></div>
             </div>
-        </div> -->
+        </div>
         
         <!-- Second 3D Carousel -->
         <div class="carousel-container-2">
@@ -228,7 +244,7 @@
         </div>
         
         <!-- Brand Logos -->
-        <!-- <div class="logos">
+        <div class="logos">
             <div class="logo">G Globally</div>
             <div class="logo">G Greenleaf</div>
             <div class="logo">G Growity</div>
@@ -237,7 +253,7 @@
             <div class="logo">Starone</div>
             <div class="logo">SIPLUS</div>
             <div class="logo">L Lunder?</div>
-        </div> -->
+        </div>
     </div>
 </body>
 </html>
