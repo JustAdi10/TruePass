@@ -1028,26 +1028,74 @@
             <button class="btn btn-primary" id="walletConnect"><span>Connect wallet</span></button>
             <div class="dropdown" style="position: relative; display: inline-block;">
                 <div id="icon-btn" style="cursor: pointer; font-size: 20px; padding: 10px; border-radius: 5px;">👤</div>
-                <div class="dropdown-content" style="display: none; position: absolute; right: 0; background-color: #222; min-width: 120px; box-shadow: 0px 8px 16px rgba(0,0,0,0.2); border-radius: 5px; z-index: 1;">
-                    <a href="#" style="color: white; padding: 10px; display: block; text-decoration: none;">Profile</a>
-                    <a href="#" style="color: white; padding: 10px; display: block; text-decoration: none;">Settings</a>
-                    <a href="#" style="color: white; padding: 10px; display: block; text-decoration: none;">Logout</a>
+                <div class="dropdown-content" style="display: none; position: absolute; right: 0; background-color: #1a1a1a; min-width: 200px; box-shadow: 0px 8px 16px rgba(0,0,0,0.2); border-radius: 8px; padding: 8px 0; z-index: 1000;">
+                    <div style="padding: 8px 16px; color: #999; font-size: 0.9em;">Login</div>
+                    <a href="#" style="color: #fff; padding: 12px 16px; display: block; text-decoration: none; font-size: 0.95em;">Profile</a>
+                    <a href="#" style="color: #fff; padding: 12px 16px; display: block; text-decoration: none; font-size: 0.95em;">Watchlist</a>
+                    <a href="#" style="color: #fff; padding: 12px 16px; display: block; text-decoration: none; font-size: 0.95em;">Deals</a>
+                    <a href="#" style="color: #fff; padding: 12px 16px; display: block; text-decoration: none; font-size: 0.95em;">Studio</a>
+                    <a href="#" style="color: #fff; padding: 12px 16px; display: block; text-decoration: none; font-size: 0.95em; background-color: #333; margin: 8px 0;">Try OS2</a>
+                    
+                    <div style="border-top: 1px solid #333; margin: 8px 0;"></div>
+                    
+                    <a href="#" style="color: #fff; padding: 12px 16px; display: block; text-decoration: none; font-size: 0.95em;">Settings</a>
+                    <div style="padding: 12px 16px; color: #fff; display: flex; justify-content: space-between; align-items: center;">
+                        Language <span style="color: #666;">en ></span>
+                    </div>
+                    <div style="padding: 12px 16px; color: #fff; display: flex; justify-content: space-between; align-items: center;">
+                        Night Mode
+                        <label style="cursor: pointer;">
+                            <input type="checkbox" style="display: none;">
+                            <span style="display: inline-block; width: 36px; height: 20px; background: #333; border-radius: 10px; position: relative;">
+                                <span style="position: absolute; width: 16px; height: 16px; background: #666; border-radius: 50%; top: 2px; left: 2px;"></span>
+                            </span>
+                        </label>
+                    </div>
+                    
+                    <div style="border-top: 1px solid #333; margin: 8px 0;"></div>
+                    
+                    <div style="padding: 8px 16px; color: #999; font-size: 0.9em;">Learn</div>
+                    <a href="#" style="color: #fff; padding: 12px 16px; display: block; text-decoration: none; font-size: 0.95em;">Help center<span style="float: right; color: #666;">iw all</span></a>
+                    <a href="#" style="color: #fff; padding: 12px 16px; display: block; text-decoration: none; font-size: 0.95em;">Support<span style="float: right; color: #666;">/olume</span></a>
                 </div>
             </div>
             
             <script>
-                document.getElementById("icon-btn").addEventListener("click", function() {
-                    let dropdown = this.nextElementSibling;
-                    dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
-                });
+            // Hover functionality
+            const iconBtn = document.getElementById("icon-btn");
+            const dropdown = document.querySelector(".dropdown-content");
+            let hoverTimeout;
             
-                document.addEventListener("click", function(event) {
-                    let dropdown = document.querySelector(".dropdown-content");
-                    let iconBtn = document.getElementById("icon-btn");
-                    if (!iconBtn.contains(event.target) && !dropdown.contains(event.target)) {
+            iconBtn.addEventListener("mouseenter", () => {
+                clearTimeout(hoverTimeout);
+                dropdown.style.display = "block";
+            });
+            
+            iconBtn.addEventListener("mouseleave", () => {
+                hoverTimeout = setTimeout(() => {
+                    if (!dropdown.matches(":hover")) {
                         dropdown.style.display = "none";
                     }
-                });
+                }, 200);
+            });
+            
+            dropdown.addEventListener("mouseenter", () => {
+                clearTimeout(hoverTimeout);
+                dropdown.style.display = "block";
+            });
+            
+            dropdown.addEventListener("mouseleave", () => {
+                hoverTimeout = setTimeout(() => {
+                    dropdown.style.display = "none";
+                }, 200);
+            });
+            
+            // Close dropdown when clicking outside
+            document.addEventListener("click", (e) => {
+                if (!iconBtn.contains(e.target) && !dropdown.contains(e.target)) {
+                    dropdown.style.display = "none";
+                }
+            });
             </script>
             
             <div class="icon-btn" id="cartButton">🛒</div>
