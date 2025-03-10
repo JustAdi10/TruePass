@@ -1043,43 +1043,81 @@
             <span class="search-icon">🔍</span>
             <input type="text" placeholder="Search events, collections, and accounts" id="searchInput">
         </div>
-        <script>
-            // Add this search functionality script
-            document.querySelector('.search-bar input').addEventListener('keypress', function(e) {
-                if (e.key === 'Enter') {
-                    performSearch(this.value);
+            <!-- Add this search functionality script -->
+    <script>
+        // Search functionality with revert capability
+        document.querySelector('.search-bar input').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                performSearch(this.value);
+            }
+        });
+
+        document.querySelector('.search-icon').addEventListener('click', function() {
+            const searchValue = document.querySelector('.search-bar input').value;
+            performSearch(searchValue);
+        });
+
+        document.querySelector('.search-bar input').addEventListener('input', function(e) {
+            if (this.value === '') {
+                revertSearch();
+            }
+        });
+
+        function performSearch(query) {
+            const searchTerm = query.toLowerCase().trim();
+            
+            if (!searchTerm) {
+                revertSearch();
+                return;
+            }
+
+            const eventCards = document.querySelectorAll('.collection-card');
+            
+            eventCards.forEach(card => {
+                const title = card.querySelector('.collection-name').textContent.toLowerCase();
+                const description = card.querySelector('.collection-info div:not(.collection-price)').textContent.toLowerCase();
+                
+                if (title.includes(searchTerm) || description.includes(searchTerm)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
                 }
             });
             
-            document.querySelector('.search-icon').addEventListener('click', function() {
-                const searchValue = document.querySelector('.search-bar input').value;
-                performSearch(searchValue);
+            // Show section titles if any results found
+            document.querySelectorAll('[class$="-section"]').forEach(section => {
+                const hasVisibleCards = Array.from(section.querySelectorAll('.collection-card'))
+                    .some(card => card.style.display !== 'none');
+                
+                section.style.display = hasVisibleCards ? 'block' : 'none';
+            });
+        }
+
+        function revertSearch() {
+            // Show all cards
+            document.querySelectorAll('.collection-card').forEach(card => {
+                card.style.display = 'block';
             });
             
-            function performSearch(query) {
-                const searchTerm = query.toLowerCase();
-                const eventCards = document.querySelectorAll('.collection-card');
-                
-                eventCards.forEach(card => {
-                    const title = card.querySelector('.collection-name').textContent.toLowerCase();
-                    const description = card.querySelector('.collection-info div:not(.collection-price)').textContent.toLowerCase();
-                    
-                    if (title.includes(searchTerm) || description.includes(searchTerm)) {
-                        card.style.display = 'block';
+            // Show all sections
+            document.querySelectorAll('[class$="-section"]').forEach(section => {
+                section.style.display = 'block';
+            });
+            
+            // Re-apply active category filter
+            const activeCategory = document.querySelector('.category.active');
+            if (activeCategory) {
+                const target = activeCategory.dataset.target;
+                document.querySelectorAll('[class$="-section"]').forEach(section => {
+                    if(target === 'all' || section.id === target) {
+                        section.style.display = 'block';
                     } else {
-                        card.style.display = 'none';
+                        section.style.display = 'none';
                     }
                 });
-                
-                // Show section titles if any results found
-                document.querySelectorAll('[class$="-section"]').forEach(section => {
-                    const hasVisibleCards = Array.from(section.querySelectorAll('.collection-card'))
-                        .some(card => card.style.display !== 'none');
-                    
-                    section.style.display = hasVisibleCards ? 'block' : 'none';
-                });
             }
-            </script>
+        }
+    </script>
         
         <div class="action-buttons">
             <button class="btn btn-primary" id="walletConnect"><span>Connect wallet</span></button>
